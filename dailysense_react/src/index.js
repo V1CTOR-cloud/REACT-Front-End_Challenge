@@ -3,12 +3,31 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: "https://api-eu-west-2.hygraph.com/v2/cl8ndm5i20c2y01un1342bexj/master",
+  cache: new InMemoryCache()
+});
+
+client
+  .query({
+    query: gql`
+      query GetDependentPerson{
+        dependentPeople {
+          id
+          name
+        }
+      }
+    `,
+  })
+  .then((result) => console.log(result.data.dependentPeople[0].name));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>
+  </ApolloProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
