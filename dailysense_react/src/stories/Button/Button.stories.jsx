@@ -9,9 +9,9 @@ export default {
 
 const Template = args => <Button {...args} />
 
-export const primary = Template.bind({});
+export const GeneralButton = Template.bind({});
 
-primary.args = {
+GeneralButton.args = {
     label: 'Sign In',
     buttonType: 'primary',
     backgroundColor: "",

@@ -1,11 +1,11 @@
 import './App.css';
-import Landing from './Screens/Landing';
+import PageLanding from './Screens/PageLanding';
 import { useQuery, gql } from '@apollo/client';
 
 export default function App() {
   return (
     <div className="App">
-      <Landing />
+      <PageLanding ShowContent={true} LandingHeight={100} LandingWidth={100} backgroundColor='#FFF'/>
     </div>
   );
 }
