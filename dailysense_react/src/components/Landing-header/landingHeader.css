@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4464EB;
+    --secondary: #eb44b7;
+    --terciary: #ebcb44;
+    --quarter: #44eb77;
+    --bckground: #fff;
+    --error: #FC5555;
+    --success: #29CC6A;
+}
+
+.blob {
+    height: 22rem;
+    position: absolute;
+    top: -8rem;
+    left: -6rem;
+    transform: rotate(-20deg);
+}
+
+.headerContainer {
+    width: 100%;
+    height: 20%;
+}
+
+.logo {
+    height: 15rem;
+    position: absolute;
+    top: -2rem;
+    left: -2rem;
+}
+
+header {
+    height: 100%;
+    background: var(--secondary);
+}
+
+.contbtn {
+    height: 100%;
+    width: 30%;
+    background: #29CC6A;
+    float: right;
+}

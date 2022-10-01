@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+/* Palette */
+
+:root {
+    --primary: #4464EB;
+    --secondary: #eb44b7;
+    --terciary: #ebcb44;
+    --quarter: #44eb77;
+    --bckground: #fff;
+    --error: #FC5555;
+    --success: #29CC6A;
+}
+
+.landing-container {
+    height: 100vh;
+    width: 100%;
+    background: var(--bckground);
+}

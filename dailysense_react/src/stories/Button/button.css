@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+button {
+    border: 0;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all ease-in .2s;
+}
+
+button.primary {
+    background: #4464eb;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+button.primary:hover {
+    transform: scaleY(2px);
+}
+
+button.secondary {
+    background: transparent;
+    color: #4464eb;
+    border: 1px solid #4464eb;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+button.secondary:hover {
+    transform: scaleY(20px);
+}
