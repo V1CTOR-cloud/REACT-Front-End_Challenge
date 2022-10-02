@@ -3,7 +3,6 @@ import './landingHeader.css';
 import { Blob } from './Blob';
 import {Button} from '../Button/Button';
 
-
 export const Landingheader = ({logo, Headerheight, Headerwidth, widthbtn}) => {
 
     const style = {
