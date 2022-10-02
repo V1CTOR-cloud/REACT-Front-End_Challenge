@@ -1,7 +1,7 @@
 import React from 'react';
 import './landingHeader.css';
-import { Blob } from './Blob';
-import {Button} from '../Button/Button';
+import {BlobHeader} from '../../../stories/Blobs/BlobHeader';
+import {Button} from '../../../stories/Button/Button';
 
 export const Landingheader = ({logo, Headerheight, Headerwidth, widthbtn}) => {
 
@@ -16,7 +16,7 @@ export const Landingheader = ({logo, Headerheight, Headerwidth, widthbtn}) => {
 
     return (
         <div className="headerContainer" style={style}>
-            <Blob color='#4464EB' />   
+            <BlobHeader color='#4464EB' />   
             <header>
                 <img src={logo} className="logo" alt='' />
                 <div className="contbtn" style={stylebtn}>

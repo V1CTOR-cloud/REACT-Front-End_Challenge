@@ -1,6 +1,7 @@
 import './Landing.css';
-import { Landingheader } from '../stories/landingheader/Landingheader';
-const Logo = require('../Assets/LOGOS DAILYSENSE/BLUE PNG.png');
+import {Landingheader} from './landingheader/Landingheader';
+import { LandingBody } from './landingBody/LandingBody';
+const Logo = require('../../Assets/LOGOS DAILYSENSE/BLUE PNG.png');
 
 export default function PageLanding({LandingHeight,LandingWidth, backgroundColor}){
     const style = {
@@ -12,7 +13,7 @@ export default function PageLanding({LandingHeight,LandingWidth, backgroundColor
     return (
         <div className="landing-container" style={style}>
             <Landingheader logo={Logo} Headerheight={20} Headerwidth={100} widthbtn={26} />
-            
+            <LandingBody BodyHeight={80} BodyWidth={100} />
         </div>
     );
 }

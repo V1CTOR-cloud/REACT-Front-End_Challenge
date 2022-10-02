@@ -1,5 +1,5 @@
 import './App.css';
-import PageLanding from './Screens/PageLanding';
+import PageLanding from './Screens/PageLanding/PageLanding';
 import { useQuery, gql } from '@apollo/client';
 
 export default function App() {
