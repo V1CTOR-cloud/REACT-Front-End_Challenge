@@ -10,7 +10,7 @@ export const PageSignIn = ({ SignInHeight, SignInWidth, backgroundColor }) => {
 
     return (
         <div className="PageSignInContainer" style={style}>
-            <Mask opacity={0.8} />
+           <Mask type='SignIn' /> 
         </div>
     )
 }
