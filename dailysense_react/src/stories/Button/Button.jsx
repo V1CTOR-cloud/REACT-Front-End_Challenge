@@ -2,12 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './button.css'
 
-export const Button = ({ label, buttonType, backgroundColor , padding, handleClick }) => {
+export const Button = ({borderRadius ,label, buttonType, backgroundColor , padding, handleClick, fontSize }) => {
 
   const style = {
     backgroundColor: backgroundColor,
     padding: padding,
     border: backgroundColor ,
+    fontSize: fontSize + 'px',
+    borderRadius: borderRadius + 'px',
   }
 
 

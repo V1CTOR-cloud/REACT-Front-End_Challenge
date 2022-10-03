@@ -2,7 +2,7 @@ import React from 'react';
 import PageLanding from './PageLanding';
 
 export default {
-    title: 'Landing header',
+    title: 'Page Landing',
     component: PageLanding,
 }
 

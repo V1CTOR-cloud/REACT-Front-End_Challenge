@@ -1,6 +1,9 @@
 import React from 'react';
 import './ContentCard.css';
-import { colPhoto } from '../colPhoto/colPhoto';
+import { ColPhoto } from '../colPhoto/ColPhoto';
+import { ColInfo } from '../colInfo/ColInfo';
+
+const photo = require('../../../Assets/LOGOS DAILYSENSE/YELLOW.png');
 export const ContentCard = ({CardHeight, CardWidth, backgroundColor, borderRadius}) => {
 
     const style = {
@@ -12,10 +15,8 @@ export const ContentCard = ({CardHeight, CardWidth, backgroundColor, borderRadiu
 
   return (
     <div className="contentCard" style={style}>
-        <div className="colInfo">
-          
-        </div>
-        <colPhoto />
+        <ColInfo backgroundColor='#FFF' ColWidth={50} />
+        <ColPhoto logo={photo} />
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
-import './ContentCard.css';
-export const colPhoto = ({filter}) => {
+import '../ContentCard/ContentCard.css';
+export const ColPhoto = ({logo}) => {
 
     const style = {
-        filter: filter,
+        backgroundImage: 'url('+logo+')',
     }
 
   return (

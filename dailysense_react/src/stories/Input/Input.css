@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter';
+}
+
+:root {
+    --primary: #4464EB;
+    --secondary: #eb44b7;
+    --terciary: #ebcb44;
+    --quarter: #44eb77;
+    --bckground: #fff;
+    --error: #FC5555;
+    --success: #29CC6A;
+}
+
+.box {
+    flex-direction: column;
+    padding: 10px;
+}
+
+input {
+    margin-top: 5px;
+    border-radius: 4px;
+}
