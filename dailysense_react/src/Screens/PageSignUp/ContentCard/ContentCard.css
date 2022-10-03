@@ -1,3 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Palette */
+
 :root {
     --primary: #4464EB;
     --secondary: #eb44b7;
@@ -8,20 +17,9 @@
     --success: #29CC6A;
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.bodyContainer {
+.contentCard {
     height: 80%;
-    width: 100%;
-}
-
-.movable {
-    position: absolute;
-    top: 68%;
-    left: 70%;
-    z-index: 1;
+    width: 80%;
+    background: var(--bckground);
+    border-radius: 20px;
 }
