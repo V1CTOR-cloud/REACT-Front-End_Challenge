@@ -2,7 +2,7 @@ import React from 'react';
 import './landingHeader.css';
 import { BlobHeader } from '../../../stories/Blobs/BlobHeader';
 import { Button } from '../../../stories/Button/Button';
-
+import { Link, Navigate } from 'react-router-dom';
 
 export const Landingheader = ({ logo, Headerheight, Headerwidth, widthbtn }) => {
 

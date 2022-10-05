@@ -3,19 +3,13 @@ import { BoxTitleLanding } from '../TitleBox/BoxTitleLanding';
 import './LandingBody.css';
 import { BlobBody } from '../../../stories/Blobs/BlobBody';
 import { Scroll } from '../../../stories/LottieFiles/Scroll';
-const file = require('../../../Assets/lotties/Scroll2.json');
+const file = require('../../../Assets/lotties/Scroll3.json');
 
 export const LandingBody = ({ BodyHeight, BodyWidth }) => {
 
   const style = {
     height: BodyHeight + '%',
     width: BodyWidth + '%',
-  }
-
-  const styleAnimation = {
-    position: 'absolute',
-    zIndex: 1,
-
   }
 
   return (

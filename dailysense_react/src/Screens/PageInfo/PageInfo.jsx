@@ -2,8 +2,8 @@ import React from 'react'
 import './PageInfo.css';
 import { PageInfoContent } from './PageInfoContent/PageInfoContent';
 import { PageInfoFooter } from './PageInfoFooter';
-const headerPhoto = require('../../Assets/OTHER/1.jpg');
-const bodyPhoto = require('../../Assets/OTHER/3.jpg');
+const headerPhoto = require('../../Assets/OTHER/1-2.jpg');
+const bodyPhoto = require('../../Assets/OTHER/6.jpg');
 const logo = require('../../Assets/LOGOS DAILYSENSE/BLUE PNG.png');
 export const PageInfo = ({ InfogHeight, InfoWidth, backgroundColor }) => {
 

@@ -9,8 +9,6 @@ export default function App() {
   return (
     <div className="App">
       <PageLanding ShowContent={true} LandingHeight={120} LandingWidth={100} backgroundColor='#FFF' />
-      {/* <PageSignUp /> */}
-      {/* <PageSignIn  /> */}
       <PageInfo backgroundColor='#FFF' InfogHeight={120} InfoWidth={100} />
     </div>
   );
