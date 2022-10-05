@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter';
+}
+
+
+/* Palette */
+
+:root {
+    --primary: #4464EB;
+    --secondary: #eb44b7;
+    --terciary: #ebcb44;
+    --quarter: #44eb77;
+    --bckground: #fff;
+    --error: #FC5555;
+    --success: #29CC6A;
+}
+
+.Info_Container {
+    height: 100vh;
+    width: 100%;
+    background: var(--bckground);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.PageInfoContent {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12rem;
+}
+
+.textwrapper {
+    width: 30%;
+    padding: 20px;
+}
+
+.separator {
+    height: 5px;
+    width: 100%;
+}
+
+.photowrapper img {
+    height: 45vh;
+}
+
+.col1 {
+    height: 50%;
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+.col1 img {
+    height: 100%;
+}
+
+.col2 {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.circle {
+    border-radius: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.borderCircle {
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.borderCircle img {
+    height: 60%;
+    width: 60%;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}

@@ -12,6 +12,12 @@ export const LandingBody = ({BodyHeight, BodyWidth}) => {
         width: BodyWidth + '%',
     }
 
+    const styleAnimation = {
+      position: 'absolute',
+      zIndex: 1,
+      
+    }
+
   return (
     <div className="bodyContainer" style={style}>
         <BoxTitleLanding word1='Welcome' word2='To' word3='DailySense' Slogan='We help you to take care of your loved ones' cordY={5} cordX={26} />
