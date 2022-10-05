@@ -8,10 +8,10 @@ import { useQuery, gql } from '@apollo/client';
 export default function App() {
   return (
     <div className="App">
-      <PageLanding ShowContent={true} LandingHeight={100} LandingWidth={100} backgroundColor='#FFF' />
+      <PageLanding ShowContent={true} LandingHeight={120} LandingWidth={100} backgroundColor='#FFF' />
       {/* <PageSignUp /> */}
       {/* <PageSignIn  /> */}
-      <PageInfo backgroundColor='#FFF' InfogHeight={100} InfoWidth={100} />
+      <PageInfo backgroundColor='#FFF' InfogHeight={120} InfoWidth={100} />
     </div>
   );
 }

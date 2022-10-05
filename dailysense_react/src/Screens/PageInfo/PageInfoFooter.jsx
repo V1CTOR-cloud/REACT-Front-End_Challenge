@@ -17,7 +17,7 @@ export const PageInfoFooter = ({ footerHeight, footerWidth, backgroundColor, log
         <footer style={style}>
             <div className="col1">
                 <img src={logo} alt="" />
-                <Text label='DAILYSENSE' fontSize={2} fontWeight={800} color='white' />
+                <Text label='DAILYSENSE' fontSize={2.3} fontWeight={800} color='white' />
             </div>
             <div className="col2">
                 <Circle CircleHeight={65} CircleWidth={65} backgroundColor='white' borderColor='#EBCB44' logo={SocialGit} url='https://github.com/V1CTOR-cloud/REACT-Front-End_Challenge' />
@@ -26,7 +26,7 @@ export const PageInfoFooter = ({ footerHeight, footerWidth, backgroundColor, log
 
                 <Circle CircleHeight={65} CircleWidth={65} backgroundColor='white' borderColor='#EB44B7' logo={SocialFigma} url='https://www.figma.com/file/TAPKVzws3AOd9Q2oHkT71Z/DailySense-REACT?node-id=1%3A3' />
             </div>
-            <SmallLabel label='DailySense© - 2022' backgroundColor={backgroundColor} color='white' fontSize={0.8} />
+            <SmallLabel label='DailySense Team - 2022' backgroundColor={backgroundColor} color='white' fontSize={0.8} />
         </footer>
     )
 }
