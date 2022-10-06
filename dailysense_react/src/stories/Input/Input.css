@@ -21,7 +21,21 @@
     padding: 10px;
 }
 
-input {
+input[type='text'] {
     margin-top: 5px;
     border-radius: 4px;
+}
+
+.image-upload>input {
+    display: none;
+}
+
+.image-upload img {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+    background: white;
+    border-radius: 100%;
 }

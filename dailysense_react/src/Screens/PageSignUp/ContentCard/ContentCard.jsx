@@ -17,8 +17,8 @@ export const ContentCard = ({ CardHeight, CardWidth, backgroundColor, borderRadi
   if (type === 'SignUp') {
     return (
       <div className="contentCard" style={style}>
-        <ColInfo backgroundColor='#FFF' ColWidth={50} type={type} />
-        <ColPhoto logo={photoSignUp} />
+        <ColInfo backgroundColor='#FFF' ColWidth={50} type={type} logo={photoSignUp} />
+        {/* <ColPhoto logo={photoSignUp} /> */}
       </div>
     )
   } else if (type === 'SignIn') {
@@ -29,6 +29,4 @@ export const ContentCard = ({ CardHeight, CardWidth, backgroundColor, borderRadi
       </div>
     );
   }
-
-
 }

@@ -8,7 +8,7 @@ export const PageSignUp = ({ SignUpHeight, SignUpWidth, backgroundColor }) => {
     width: SignUpWidth + '%',
     backgroundColor: backgroundColor,
   }
-
+  console.log();
   return (
     <div className="PageSignUpContainer" style={style}>
       <Mask opacity={0.8} type='SignUp' />
