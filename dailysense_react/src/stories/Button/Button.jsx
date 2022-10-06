@@ -12,6 +12,8 @@ export const Button = ({borderRadius ,label, buttonType, backgroundColor , paddi
     borderRadius: borderRadius + 'px',
   }
 
+  
+
 
   return (
     <button onClick={handleClick} className={buttonType} style={style}>
@@ -27,6 +29,6 @@ Button.defaultProps = {
 Button.propTypes = {
   label: PropTypes.string,
   backgroundColor: PropTypes.string,
-  onClick: PropTypes.func,
+ /*  onClick: PropTypes.func, */
   buttonType: PropTypes.oneOf(['primary', 'secondary'])
 }
