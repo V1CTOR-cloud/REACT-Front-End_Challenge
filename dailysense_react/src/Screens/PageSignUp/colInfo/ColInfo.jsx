@@ -8,8 +8,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client
 export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
 
 
-    const [selectedFile, setSelectedFile] = useState(null);
-
+    const [selectedFile, setSelectedFile] = useState(logo);
 
     const [data, setData] = useState({
         id: "",
@@ -39,7 +38,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
             .then((res) => {
                 if (res.data) {
                     res.data.dependentPeople.forEach((item, index) => {
-                        console.log(index + ': ' + item.name);
+                        //console.log(index + ': ' + item.name);
                     });
                 } else {
                     console.log('Error on the client side (query)');

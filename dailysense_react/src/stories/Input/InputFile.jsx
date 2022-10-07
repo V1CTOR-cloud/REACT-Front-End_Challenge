@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import './Input.css';
 const InputLogo = require('../../Assets/OTHER/camera.png');
-export const InputFile = props => {
+export const InputFile = ({selectedFile}) => {
 
   const fileInput = useRef(null)
 
@@ -13,7 +13,8 @@ export const InputFile = props => {
 
   const handleChange = (e) => {
     const fileUploaded = e.target.files[0];
-    props.handleFile(fileUploaded);
+    selectedFile = fileUploaded;
+    console.log(selectedFile);
   };
 
   return (
