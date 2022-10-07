@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Input.css';
 import { Text } from '../Text/Text';
 
-export const Input = ({ type, label, placeholder, padding, borderColor, color, width, value }) => {
-
+const Input = (props, { type, label, placeholder, padding, borderColor, color, width, value, onChange }) => {
     const style = {
-        padding: padding,
-        color: color,
-        width: width + 'rem',
-        border: '1px solid '+ borderColor,
+        padding: props.padding,
+        color: props.color,
+        width: props.width + 'rem',
+        border: '1px solid ' + props.borderColor,
         boxShadow: "none",
     }
 
     return (
         <div className="box">
-            <Text label={label} fontWeight={300} fontSize={0.8}  />
-            <input type={type} placeholder={placeholder} style={style} width={width} value={value} />
+            <Text
+                label={props.label}
+                fontWeight={300}
+                fontSize={0.8} />
+            <input
+                type={props.type}
+                onChange={(e) => props.onChange(e.target.value)}
+                placeholder={props.placeholder}
+                style={style}
+                width={props.width}
+                value={props.value} />
         </div>
     )
 }
+
+export default Input;
