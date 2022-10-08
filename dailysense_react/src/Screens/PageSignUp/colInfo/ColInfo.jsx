@@ -5,8 +5,11 @@ import { Button } from '../../../stories/Button/Button';
 import Input from '../../../stories/Input/Input';
 import InputFile from '../../../stories/Input/InputFile';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
+
+    const navigate = useNavigate ();
+    
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -40,7 +43,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
             if (email !== '' && ValidateEmail(email)) {
                 if (password !== '') {
                     if (selectedFile !== null) {
-                        getDataAPI()
+                        SignUpCheck()
                     } else {
                         console.log('ERROR: Avatar photo is required');
                     }
@@ -55,41 +58,116 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
         }
     }
 
-    const getDataAPI = () => {
+    const SignUpCheck = () => {
 
-        const Myquery = gql(`
-        query {
+        const query = `query {
             worker (where: {
-              email: "horta@gmail.com"
+              email: "${email}"
             }) {
               name
               email
             }
           }
-        `);
+        `;
 
+        const Myquery = gql(query);
         client
             .query({
                 query: Myquery
             })
             .then((res) => {
-                if (res.data) {
-                    if (res.data.worker.email !== email) {
-                        console.log('CONTINUE');
-                    }
+                if (res.data.worker === null) {
+
                 } else {
-                    console.log('Error on the client side (query)');
+                    console.error('This account is already in use');
                 }
             }).catch((err) => {
                 console.warn('Error getting data from server: ', err);
             });
     }
 
+    const SignInValidation =() => {
+        if (email !== '' && ValidateEmail(email)) {
+            if (password !== '') {
+                if (selectedFile !== null) {
+                    SignInCheck()
+                } else {
+                    console.log('ERROR: Avatar photo is required');
+                }
+            } else {
+                console.log('ERROR: password is required');
+            }
+        } else {
+            console.log('ERROR: email is required');
+        }
+    }
+    
+    const SignInCheck = () => {
+        const query = `query {
+            worker (where: {
+              email: "${email}"
+            }) {
+              name
+              email
+              password
+            }
+          }
+        `;
+
+        const Myquery = gql(query);
+        client
+            .query({
+                query: Myquery
+            })
+            .then((res) => {
+                if (res.data.worker !== null) {
+                    if(res.data.worker.email !== '' && res.data.worker.password === password) {
+                        console.log(res.data.worker);
+                        navigate('/main', {
+                            name: name,
+                            email: email,
+                            password: password
+                        });
+                    }
+                } else {
+                    console.error('This account is already in use');
+                }
+            }).catch((err) => {
+                console.warn('Error getting data from server: ', err);
+            });
+
+    }
+
 
     const MutationAPI = () => {
-        const MyMutation = gql(`
-            
-        `);
+        const mutation = `
+        mutation {
+            createWorker(
+              data: {
+                name: "${name}",
+                email: "${email}",
+                password: "${password}",
+                }
+            ) {
+              name
+              email
+              password
+            }
+          }
+        `;
+
+        const MyMutation = gql(mutation);
+
+        client
+            .query({
+                query: MyMutation
+            })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 
 
@@ -198,6 +276,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                 </div>
                 <div className="ColInfoBody">
                     <Input
+                        onChange={(value) => setEmail(value)}
                         label='Email Adress'
                         borderColor='#4464EB'
                         padding='8px'
@@ -205,6 +284,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                         placeholder='Email Adress'
                         width={19} />
                     <Input
+                        onChange={(value) => setPassword(value)}
                         type='password'
                         label='Password'
                         borderColor='#4464EB'
@@ -219,7 +299,9 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                         borderRadius={20}
                         backgroundColor='#4464EB'
                         padding='10px 120px'
-                        fontSize={20} />
+                        fontSize={20}
+                        handleClick={SignInValidation}
+                    />
                 </div>
             </div>
         );
