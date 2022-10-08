@@ -31,7 +31,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
             return (true)
         }
-        alert("You have entered an invalid email address!")
+        console.error('Invalid email address: ' + email);
         return (false)
     }
 
@@ -58,12 +58,12 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
     const getDataAPI = () => {
 
         const Myquery = gql(`
-        query MyQuery {
-            workers{
-              id
+        query {
+            worker (where: {
+              email: "horta@gmail.com"
+            }) {
               name
               email
-              password
             }
           }
         `);
@@ -74,17 +74,22 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
             })
             .then((res) => {
                 if (res.data) {
-                    res.data.workers.forEach((item, index) => {
-                        if (item.email !== email) {
-                            ShowInfo();
-                        }
-                    });
+                    if (res.data.worker.email !== email) {
+                        console.log('CONTINUE');
+                    }
                 } else {
                     console.log('Error on the client side (query)');
                 }
             }).catch((err) => {
                 console.warn('Error getting data from server: ', err);
             });
+    }
+
+
+    const MutationAPI = () => {
+        const MyMutation = gql(`
+            
+        `);
     }
 
 
