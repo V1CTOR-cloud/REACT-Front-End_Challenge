@@ -5,6 +5,7 @@ import { Button } from '../../../stories/Button/Button';
 import Input from '../../../stories/Input/Input';
 import InputFile from '../../../stories/Input/InputFile';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { Link } from 'react-router-dom';
 export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
 
     const [name, setName] = useState("");
@@ -26,15 +27,57 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
         cache: new InMemoryCache(),
     });
 
-    function getDataAPI(GQL) {
+    function ValidateEmail(email) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            return (true)
+        }
+        alert("You have entered an invalid email address!")
+        return (false)
+    }
+
+    const emptyValidation = () => {
+        if (name !== '') {
+            if (email !== '' && ValidateEmail(email)) {
+                if (password !== '') {
+                    if (selectedFile !== null) {
+                        getDataAPI()
+                    } else {
+                        console.log('ERROR: Avatar photo is required');
+                    }
+                } else {
+                    console.log('ERROR: password is required');
+                }
+            } else {
+                console.log('ERROR: email is required');
+            }
+        } else {
+            console.log('ERROR: name is required');
+        }
+    }
+
+    const getDataAPI = () => {
+
+        const Myquery = gql(`
+        query MyQuery {
+            workers{
+              id
+              name
+              email
+              password
+            }
+          }
+        `);
+
         client
             .query({
-                query: gql`${GQL}`
+                query: Myquery
             })
             .then((res) => {
                 if (res.data) {
                     res.data.workers.forEach((item, index) => {
-                        //console.log(index + ': ' + item.id + '\n: ' + item.name + '\n: ' + item.email + '\n: ' + item.password);
+                        if (item.email !== email) {
+                            ShowInfo();
+                        }
                     });
                 } else {
                     console.log('Error on the client side (query)');
@@ -43,6 +86,8 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                 console.warn('Error getting data from server: ', err);
             });
     }
+
+
 
     function ShowInfo() {
         console.log('Name: ' + name);
@@ -55,27 +100,14 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = (file) => {
-            //console.log(reader.result);
             setSelectedFile(reader.result); // Display the selected file in css with BASE64
         };
         reader.onerror = (e) => {
-            console.log('Error' + e);
+            console.warn('Error' + e);
         }
     }
 
     if (type === 'SignUp') {
-
-        getDataAPI(`
-        query MyQuery {
-            workers{
-              id
-              name
-              email
-              password
-            }
-          }
-        `,);
-
         return (
             <>
                 <div className="ColInfo" style={style}>
@@ -118,18 +150,29 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                             width={19} />
                     </div>
                     <div className="colInfoFooter">
-                        <Button
+                        <Button // Validation Button
                             label='Sign Up'
                             borderRadius={20}
                             backgroundColor='#EBCB44'
                             padding='10px 120px'
                             fontSize={20}
-                            handleClick={ShowInfo}
+                            handleClick={emptyValidation}
                         />
                     </div>
                 </div>
                 <div className="colPhoto" style={styleColPhoto}>
+                    <Link to='/'>
+                        <Button
+                            btnHeight={10}
+                            btnwidth={10}
+                            padding='13px'
+                            label='x'
+                            backgroundColor='#FC5555'
+                            borderRadius={100}
+                        />
+                    </Link>
                     <InputFile onChange={(file) => ConvertBase64(file)} />
+
                 </div>
             </>
         );
