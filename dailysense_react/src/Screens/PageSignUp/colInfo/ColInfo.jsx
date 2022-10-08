@@ -5,11 +5,11 @@ import { Button } from '../../../stories/Button/Button';
 import Input from '../../../stories/Input/Input';
 import InputFile from '../../../stories/Input/InputFile';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import { Link, useNavigate  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
 
-    const navigate = useNavigate ();
-    
+    const navigate = useNavigate();
+
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -86,7 +86,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
             });
     }
 
-    const SignInValidation =() => {
+    const SignInValidation = () => {
         if (email !== '' && ValidateEmail(email)) {
             if (password !== '') {
                 if (selectedFile !== null) {
@@ -101,7 +101,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
             console.log('ERROR: email is required');
         }
     }
-    
+
     const SignInCheck = () => {
         const query = `query {
             worker (where: {
@@ -110,6 +110,17 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
               name
               email
               password
+              avatar {
+                url(transformation:{
+                    image: {
+                      resize: {
+                        height: 100,
+                        width: 100,
+                        fit: scale
+                      }
+                    }
+                })
+              }
             }
           }
         `;
@@ -121,13 +132,14 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
             })
             .then((res) => {
                 if (res.data.worker !== null) {
-                    if(res.data.worker.email !== '' && res.data.worker.password === password) {
-                        console.log(res.data.worker);
-                        navigate('/main', {
-                            name: name,
+                    if (res.data.worker.email !== '' && res.data.worker.password === password) {
+                        //console.log(res.data.worker);
+                        navigate('/main', {state: {
+                            name: res.data.worker.name,
                             email: email,
-                            password: password
-                        });
+                            password: password,
+                            avatar: res.data.worker.avatar
+                        }});
                     }
                 } else {
                     console.error('This account is already in use');

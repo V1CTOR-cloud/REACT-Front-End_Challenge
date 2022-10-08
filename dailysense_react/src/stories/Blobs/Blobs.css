@@ -15,3 +15,11 @@
     z-index: 1;
     /* transform: rotate(-20deg); */
 }
+
+.blobMain1 {
+    height: 42rem;
+    width: 42rem;
+    position: absolute;
+    left: -20rem;
+    bottom: -15rem;
+}
