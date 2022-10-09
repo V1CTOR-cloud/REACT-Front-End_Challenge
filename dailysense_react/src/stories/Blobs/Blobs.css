@@ -20,6 +20,23 @@
     height: 42rem;
     width: 42rem;
     position: absolute;
-    left: -20rem;
+    left: -16rem;
     bottom: -15rem;
+}
+
+.blobMain2 {
+    height: 42rem;
+    width: 42rem;
+    position: absolute;
+    right: -10rem;
+    bottom: -18rem;
+    transform: rotate(-50deg);
+}
+
+.blobMain3 {
+    height: 32rem;
+    width: 32rem;
+    position: absolute;
+    right: -13rem;
+    top: -1rem;
 }
