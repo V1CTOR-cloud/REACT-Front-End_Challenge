@@ -134,12 +134,14 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                 if (res.data.worker !== null) {
                     if (res.data.worker.email !== '' && res.data.worker.password === password) {
                         //console.log(res.data.worker);
-                        navigate('/main', {state: {
-                            name: res.data.worker.name,
-                            email: email,
-                            password: password,
-                            avatar: res.data.worker.avatar
-                        }});
+                        navigate('/main', {
+                            state: {
+                                name: res.data.worker.name,
+                                email: email,
+                                password: password,
+                                avatar: res.data.worker.avatar
+                            }
+                        });
                     }
                 } else {
                     console.error('This account is already in use');
@@ -202,6 +204,10 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
         }
     }
 
+    function GoBack() {
+        navigate('/');
+    }
+
     if (type === 'SignUp') {
         return (
             <>
@@ -256,66 +262,77 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                     </div>
                 </div>
                 <div className="colPhoto" style={styleColPhoto}>
-                    <Link to='/'>
-                        <Button
-                            btnHeight={10}
-                            btnwidth={10}
-                            padding='13px'
-                            label='x'
-                            backgroundColor='#FC5555'
-                            borderRadius={100}
-                        />
-                    </Link>
+                    <Button
+                        btnHeight={10}
+                        btnwidth={10}
+                        padding='13px'
+                        label='x'
+                        backgroundColor='#FC5555'
+                        borderRadius={100}
+                        handleClick={GoBack}
+                    />
                     <InputFile onChange={(file) => ConvertBase64(file)} />
-
                 </div>
             </>
         );
     } else if (type === 'SignIn') {
         return (
-            <div className="ColInfo" style={style}>
-                <div className="ColInfoHeader">
-                    <Text
-                        label='Sign'
-                        color='black'
-                        fontWeight={800}
-                        fontSize={2.3} />
-                    <Text
-                        label='In'
-                        color='#4464EB'
-                        fontWeight={800}
-                        fontSize={2.3} />
+            <>
+                <div className="ColInfo" style={style}>
+                    <div className="ColInfoHeader">
+                        <Text
+                            label='Sign'
+                            color='black'
+                            fontWeight={800}
+                            fontSize={2.3} />
+                        <Text
+                            label='In'
+                            color='#4464EB'
+                            fontWeight={800}
+                            fontSize={2.3} />
+                    </div>
+                    <div className="ColInfoBody">
+                        <Input
+                            onChange={(value) => setEmail(value)}
+                            label='Email Adress'
+                            borderColor='#4464EB'
+                            padding='8px'
+                            color='grey'
+                            placeholder='Email Adress'
+                            width={19} />
+                        <Input
+                            onChange={(value) => setPassword(value)}
+                            type='password'
+                            label='Password'
+                            borderColor='#4464EB'
+                            padding='8px'
+                            color='grey'
+                            placeholder='Password'
+                            width={19} />
+                    </div>
+                    <div className="colInfoFooter">
+                        <Button
+                            label='Sign In'
+                            borderRadius={20}
+                            backgroundColor='#4464EB'
+                            padding='10px 120px'
+                            fontSize={20}
+                            handleClick={SignInValidation}
+                        />
+                    </div>
                 </div>
-                <div className="ColInfoBody">
-                    <Input
-                        onChange={(value) => setEmail(value)}
-                        label='Email Adress'
-                        borderColor='#4464EB'
-                        padding='8px'
-                        color='grey'
-                        placeholder='Email Adress'
-                        width={19} />
-                    <Input
-                        onChange={(value) => setPassword(value)}
-                        type='password'
-                        label='Password'
-                        borderColor='#4464EB'
-                        padding='8px'
-                        color='grey'
-                        placeholder='Password'
-                        width={19} />
-                </div>
-                <div className="colInfoFooter">
+                <div className="colPhoto" style={styleColPhoto}>
                     <Button
-                        label='Sign In'
-                        borderRadius={20}
-                        backgroundColor='#4464EB'
-                        padding='10px 120px'
-                        fontSize={20}
-                        handleClick={SignInValidation}
+                        btnHeight={10}
+                        btnwidth={10}
+                        padding='13px'
+                        label='x'
+                        backgroundColor='#FC5555'
+                        borderRadius={100}
+                        handleClick={GoBack}
                     />
                 </div>
-            </div>
+            </>
         );
     }
 }
