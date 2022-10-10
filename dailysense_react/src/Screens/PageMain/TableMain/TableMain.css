@@ -26,4 +26,17 @@
     width: 70%;
     background-color: violet;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid slateblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './TableMain.css';
-export const TableMain = ({ backgroundColor, TableHeight, TableWidth, BorderRadius }) => {
+export const TableMain = ({ data ,backgroundColor, TableHeight, TableWidth, BorderRadius }) => {
+    //console.log(data);
+
+    const tableObj = data.map((obj) => {
+        console.log(obj);
+        
+    });
+    
+    useEffect(() => {
+       
+    }, []);
 
     const style = {
         height: TableHeight + '%',
@@ -12,9 +22,7 @@ export const TableMain = ({ backgroundColor, TableHeight, TableWidth, BorderRadi
 
     return (
         <div className="TableMain" style={style}>
-            <table>
-
-            </table>
+           {tableObj}
         </div>
     )
 }
