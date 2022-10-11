@@ -19,6 +19,7 @@ export const PageMainBody = ({ email, bodyHeight, bodyWidth, backgroundColor }) 
           worker(where: {email: "${email}"}) {
             dependents{
             ... on DependentPerson{
+              id
               name
               email
               age
@@ -50,13 +51,10 @@ export const PageMainBody = ({ email, bodyHeight, bodyWidth, backgroundColor }) 
       })
       .then((res) => {
         //console.log(res.data.worker.dependents);
-
-        res.data.worker.dependents.map((item, index) => {
+        res.data.worker.dependents.map((item) => {
           //console.log(item);
           arrObj.push(item);
         })  
-
-        
       }).catch((err) => {
         console.warn('Error getting data from server: ', err);
       });
@@ -64,15 +62,13 @@ export const PageMainBody = ({ email, bodyHeight, bodyWidth, backgroundColor }) 
 
   useEffect(() => {
     getDependentData();
-    
-  }, [])
+  })
 
   const style = {
     height: bodyHeight + 'vh',
     width: bodyWidth + '%',
     backgroundColor: backgroundColor,
   }
-  //console.log(data);
 
   return (
     <div className="body" style={style}>
@@ -83,7 +79,7 @@ export const PageMainBody = ({ email, bodyHeight, bodyWidth, backgroundColor }) 
         data={arrObj}
         TableHeight={90}
         TableWidth={75}
-        backgroundColor='lightgray' />
+        backgroundColor='white' />
     </div>
   )
 }

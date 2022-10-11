@@ -5,6 +5,7 @@ import App from './App';
 import { PageSignIn } from './Screens/PageSignIn/PageSignIn';
 import { PageSignUp } from './Screens/PageSignUp/PageSignUp';
 import { PageMain } from './Screens/PageMain/PageMain';
+import {PageConfig } from './Screens/PageConfig/PageConfig';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ root.render(
           <Route path="login" element={<PageSignIn SignInHeight={100} SignInWidth={100} backgroundColor='white' />} />
           <Route path="signup" element={<PageSignUp SignUpHeight={100} SignUpWidth={100} backgroundColor='white' />} />
           <Route path="main" element={<PageMain />} />
+          <Route path="config" element={<PageConfig />} />
           <Route path="*" element={<Navigate replace to='/' />} />
         </Route>
       </Routes>

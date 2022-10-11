@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+/* Palette */
+
+:root {
+    --primary: #4464EB;
+    --secondary: #eb44b7;
+    --terciary: #ebcb44;
+    --quarter: #44eb77;
+    --bckground: #fff;
+    --error: #FC5555;
+    --success: #29CC6A;
+}
+
+.configContainer {
+    height: 100vh;
+    width: 100%;
+    background: black;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ConfigCard {
+    height: 80%;
+    width: 60%;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputWrapper {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnWrapper {
+    height: 20%;
+    width: 100%;
+}

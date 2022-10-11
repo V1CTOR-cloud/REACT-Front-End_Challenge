@@ -5,6 +5,7 @@ import { Button } from '../../../stories/Button/Button';
 import Input from '../../../stories/Input/Input';
 import InputFile from '../../../stories/Input/InputFile';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import {Mutation} from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
 
@@ -58,6 +59,33 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
         }
     }
 
+    function createWorker() {
+        const mutation = `
+        mutation {
+            createWorker(
+              data: {name: "${name} ", password: "${password}", email: "${email}"}
+            ) {
+              name
+              email
+              password
+            }
+          }
+        `;
+
+        const MyMutation = gql(mutation);
+
+        client
+            .mutate({
+                mutation: MyMutation,
+                variables:{
+                    name: name,
+                    email: email,
+                    password: password,
+                },
+            })
+            
+    }
+
     const SignUpCheck = () => {
 
         const query = `query {
@@ -76,8 +104,10 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                 query: Myquery
             })
             .then((res) => {
+                //console.log(res.data.worker);
                 if (res.data.worker === null) {
-
+                    createWorker();
+                    console.log('CREATED ');
                 } else {
                     console.error('This account is already in use');
                 }
@@ -149,42 +179,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
             }).catch((err) => {
                 console.warn('Error getting data from server: ', err);
             });
-
     }
-
-
-    const MutationAPI = () => {
-        const mutation = `
-        mutation {
-            createWorker(
-              data: {
-                name: "${name}",
-                email: "${email}",
-                password: "${password}",
-                }
-            ) {
-              name
-              email
-              password
-            }
-          }
-        `;
-
-        const MyMutation = gql(mutation);
-
-        client
-            .query({
-                query: MyMutation
-            })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    }
-
-
 
     function ShowInfo() {
         console.log('Name: ' + name);

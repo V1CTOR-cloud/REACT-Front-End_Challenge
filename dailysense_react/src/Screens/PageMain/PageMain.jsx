@@ -6,8 +6,8 @@ export const PageMain = () => {
   const location = useLocation();
   return (
     <div className="MainContainer">
-      <PageMainHeader avatar={location.state.avatar} headerHeight={15} headerWidth={100} name={location.state.name} />
-      <PageMainBody email={location.state.email} bodyHeight={85} bodyWidth={100} />
+      <PageMainHeader email={location.state.email} password={location.state.password} backgroundColor='#EDEADE' avatar={location.state.avatar} headerHeight={15} headerWidth={100} name={location.state.name} />
+      <PageMainBody backgroundColor='#EDEADE' email={location.state.email} bodyHeight={85} bodyWidth={100} />
     </div>
   )
 }

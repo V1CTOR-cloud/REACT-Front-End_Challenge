@@ -24,18 +24,94 @@
     transform: translate(-50%, -50%);
     height: 80%;
     width: 70%;
-    background-color: violet;
     border-radius: 10px;
+    flex-direction: column;
+}
+
+.card {
+    /* border: 1px solid #4464EB; */
+    border-bottom: 1px solid #4464EB;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dependencyLevel {
+    height: 100%;
+    width: 1%;
+}
+
+#High {
+    background-color: var(--error);
+}
+
+#high {
+    background-color: var(--error);
+}
+
+#Medium {
+    background-color: var(--terciary);
+}
+
+#medium {
+    background-color: var(--terciary);
+}
+
+#Low {
+    background-color: var(--quarter);
+}
+
+#low {
+    background-color: var(--quarter);
+}
+
+.avatarWrapper {
+    height: 100%;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-table {
+.avatarDependent {
+    height: 65%;
+    width: 40%;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.name_info {
     height: 100%;
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid slateblue;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.age_info {
+    height: 100%;
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.email_info {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone_info {
+    height: 100%;
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;

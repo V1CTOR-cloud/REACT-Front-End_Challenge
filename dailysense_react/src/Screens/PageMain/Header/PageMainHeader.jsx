@@ -1,15 +1,16 @@
 import React from 'react'
 import { Text } from '../../../stories/Text/Text';
-import {Button} from '../../../stories/Button/Button';
+import { Button } from '../../../stories/Button/Button';
 import './PageMainHeader.css';
 import { useNavigate } from 'react-router-dom';
-export const PageMainHeader = ({ avatar, name, headerHeight, headerWidth }) => {
+export const PageMainHeader = ({ backgroundColor, avatar, name, email, password, headerHeight, headerWidth }) => {
 
     const navigate = useNavigate();
 
     const style = {
         height: headerHeight + 'vh',
         width: headerWidth + '%',
+        backgroundColor: backgroundColor,
     }
 
     const stylePhoto = {
@@ -20,7 +21,14 @@ export const PageMainHeader = ({ avatar, name, headerHeight, headerWidth }) => {
         <header style={style}>
             <div className="user">
                 <div className="imgWrapper">
-                    <div className="image" style={stylePhoto}></div>
+                    <div className="image" style={stylePhoto} onClick={() => navigate('/config', {
+                        state: {
+                            avatarURL: avatar.url,
+                            name: name,
+                            email: password,
+                            password: password,
+                        }
+                    })}></div>
                 </div>
                 <div className="textBox">
                     <Text label='Welcome ' fontWeight={700} fontSize={1.4} />
