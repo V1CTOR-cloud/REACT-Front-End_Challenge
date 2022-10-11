@@ -1,12 +1,19 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../../stories/Button/Button';
-export const Banner = ({ borderTopLeftRadius, borderTopRightRadius ,bannerHeight, bannerWidth, backgroundColor, imgBanner }) => {
+export const Banner = ({ name, email, password, avatar ,borderTopLeftRadius, borderTopRightRadius ,bannerHeight, bannerWidth, backgroundColor, imgBanner }) => {
 
     const navigate = useNavigate();
 
     function GoBack() {
-        navigate('/main');
+        navigate('/main',{
+            state: {
+                name: name,
+                email: email,
+                password: password,
+                avatar: avatar,
+            }
+        });
     }
 
     const styleBckColor = {

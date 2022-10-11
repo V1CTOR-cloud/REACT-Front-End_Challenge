@@ -14,7 +14,7 @@ export const PageMainHeader = ({ backgroundColor, avatar, name, email, password,
     }
 
     const stylePhoto = {
-        backgroundImage: `url(${avatar.url})`,
+        backgroundImage: `url(${avatar})`,
     }
 
     return (
@@ -23,12 +23,12 @@ export const PageMainHeader = ({ backgroundColor, avatar, name, email, password,
                 <div className="imgWrapper">
                     <div className="image" style={stylePhoto} onClick={() => navigate('/config', {
                         state: {
-                            avatarURL: avatar.url,
+                            avatar: avatar,
                             name: name,
                             email: password,
                             password: password,
                         }
-                    })}></div>
+                    })} ></div>
                 </div>
                 <div className="textBox">
                     <Text label='Welcome ' fontWeight={700} fontSize={1.4} />

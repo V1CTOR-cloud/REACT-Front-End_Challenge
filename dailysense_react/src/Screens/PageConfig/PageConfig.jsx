@@ -16,22 +16,55 @@ export const PageConfig = () => {
   const [email, setEmail] = useState(location.state.email);
   const [password, setPassword] = useState(location.state.password);
 
-  function GoBack() {
-    navigate('/main', {
-      state: {
-        name: name,
-        email: email,
-        password: password,
-        avatar: location.state.avatar
+  function goMain() {
+    console.log(name);
+    console.log(email);
+    console.log(password);
+    console.log(location.state.avatarURL);
+    /* if (validateData()) {
+      navigate('/main', {
+        state: {
+          name: name,
+          email: email,
+          password: password,
+          avatar: location.state.avatar
+        }
+      });
+    } */
+  }
+
+  function ValidateEmail(email) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      return (true)
+    }
+    console.error('Invalid email address: ' + email);
+    return (false)
+  }
+
+  function validateData() {
+    if (name !== '') {
+      if (email !== '' && ValidateEmail(email)) {
+        if (password !== '') {
+          return true;
+        } else {
+          console.log('ERROR: password is required');
+          return false;
+        }
+      } else {
+        console.log('ERROR: email is required');
+        return false;
       }
-    });
+    } else {
+      console.log('ERROR: name is required');
+      return false;
+    }
   }
 
   return (
     <div className="configContainer">
       <div className="ConfigCard">
-        <Banner borderTopLeftRadius={10} borderTopRightRadius={10} bannerHeight={40} bannerWidth={100} backgroundColor='#4464EB' />
-        <CircleImage position='absolute' transform='translate(-50%, -50%)' top={40} left={30} URL={location.state.avatarURL} CircleHeight={150} CircleWidth={150} />
+        <Banner name={name} email={email} password={password} avatar={location.state.avatar} borderTopLeftRadius={10} borderTopRightRadius={10} bannerHeight={40} bannerWidth={100} backgroundColor='#4464EB' />
+        <CircleImage position='absolute' transform='translate(-50%, -50%)' top={40} left={30} URL={location.state.avatar} CircleHeight={150} CircleWidth={150} />
         <div className="info" style={{
           height: '60%',
           width: '100%',
@@ -76,7 +109,11 @@ export const PageConfig = () => {
           </div>
           <div className="btnWrapper">
             <div className="btnContainer" style={{ float: 'right', marginRight: '40px' }}>
-              <Button label='Save' padding='10px 60px' backgroundColor='#29CC6A' />
+              <Button
+                label='Save'
+                padding='10px 60px'
+                backgroundColor='#29CC6A'
+              />
             </div>
           </div>
         </div>

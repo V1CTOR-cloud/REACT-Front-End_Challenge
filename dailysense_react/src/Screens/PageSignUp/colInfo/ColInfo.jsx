@@ -169,7 +169,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                                 name: res.data.worker.name,
                                 email: email,
                                 password: password,
-                                avatar: res.data.worker.avatar
+                                avatar: res.data.worker.avatar.url
                             }
                         });
                     }
