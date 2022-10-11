@@ -21,7 +21,7 @@ export const PageConfig = () => {
     console.log(email);
     console.log(password);
     console.log(location.state.avatarURL);
-    /* if (validateData()) {
+    if (validateData()) {
       navigate('/main', {
         state: {
           name: name,
@@ -30,7 +30,7 @@ export const PageConfig = () => {
           avatar: location.state.avatar
         }
       });
-    } */
+    }
   }
 
   function ValidateEmail(email) {
@@ -45,18 +45,15 @@ export const PageConfig = () => {
     if (name !== '') {
       if (email !== '' && ValidateEmail(email)) {
         if (password !== '') {
-          return true;
+         console.log('Mutation Here & NEXT IS NAVIGATION');
         } else {
           console.log('ERROR: password is required');
-          return false;
         }
       } else {
-        console.log('ERROR: email is required');
-        return false;
+        console.log('ERROR: email is required');       
       }
     } else {
       console.log('ERROR: name is required');
-      return false;
     }
   }
 
@@ -113,6 +110,7 @@ export const PageConfig = () => {
                 label='Save'
                 padding='10px 60px'
                 backgroundColor='#29CC6A'
+                handleClick={validateData}
               />
             </div>
           </div>
