@@ -1,12 +1,13 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../../stories/Button/Button';
-export const Banner = ({ name, email, password, avatar ,borderTopLeftRadius, borderTopRightRadius ,bannerHeight, bannerWidth, backgroundColor, imgBanner }) => {
+import toast, { Toaster } from 'react-hot-toast';
+export const Banner = ({ name, email, password, avatar, borderTopLeftRadius, borderTopRightRadius, bannerHeight, bannerWidth, backgroundColor, imgBanner }) => {
 
     const navigate = useNavigate();
 
     function GoBack() {
-        navigate('/main',{
+        navigate('/main', {
             state: {
                 name: name,
                 email: email,
@@ -14,6 +15,30 @@ export const Banner = ({ name, email, password, avatar ,borderTopLeftRadius, bor
                 avatar: avatar,
             }
         });
+    }
+
+    function ValidateEmail(email) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            return (true)
+        }
+        console.error('Invalid email address: ' + email);
+        return (false)
+    }
+
+    function validateData() {
+        if (name !== '') {
+            if (email !== '' && ValidateEmail(email)) {
+                if (password !== '') {
+                    GoBack();
+                } else {
+                    toast.error('error: password is required');
+                }
+            } else {
+                toast.error('error: email is required');
+            }
+        } else {
+            toast.error('error: name is required');
+        }
     }
 
     const styleBckColor = {
@@ -44,7 +69,7 @@ export const Banner = ({ name, email, password, avatar ,borderTopLeftRadius, bor
                         label='x'
                         backgroundColor='#FC5555'
                         borderRadius={100}
-                        handleClick={GoBack}
+                        handleClick={validateData}
                     />
                 </div>
             </div>
@@ -60,9 +85,10 @@ export const Banner = ({ name, email, password, avatar ,borderTopLeftRadius, bor
                         label='x'
                         backgroundColor='#FC5555'
                         borderRadius={100}
-                        handleClick={GoBack}
+                        handleClick={validateData}
                     />
                 </div>
+                <Toaster />
             </div>
         )
     }

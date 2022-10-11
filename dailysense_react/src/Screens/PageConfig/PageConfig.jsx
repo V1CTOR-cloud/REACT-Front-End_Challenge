@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Banner } from './Banner';
 import { Button } from '../../stories/Button/Button';
-import { Text } from '../../stories/Text/Text';
+import toast, { Toaster } from 'react-hot-toast';
 import Input from '../../stories/Input/Input';
 import { CircleImage } from '../../stories/CircleImage/CircleImage';
 import './PageConfig.css'
@@ -45,15 +45,18 @@ export const PageConfig = () => {
     if (name !== '') {
       if (email !== '' && ValidateEmail(email)) {
         if (password !== '') {
-         console.log('Mutation Here & NEXT IS NAVIGATION');
+          toast.success('Mutation Here & NEXT IS NAVIGATION', {
+            position:'bottom-right'
+          }
+          );
         } else {
-          console.log('ERROR: password is required');
+          toast.error('error: password is required');
         }
       } else {
-        console.log('ERROR: email is required');       
+        toast.error('error: email is required');
       }
     } else {
-      console.log('ERROR: name is required');
+      toast.error('error: name is required');
     }
   }
 
@@ -116,6 +119,7 @@ export const PageConfig = () => {
           </div>
         </div>
       </div>
+      <Toaster />
     </div>
   )
 }

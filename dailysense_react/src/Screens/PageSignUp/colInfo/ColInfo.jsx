@@ -5,7 +5,8 @@ import { Button } from '../../../stories/Button/Button';
 import Input from '../../../stories/Input/Input';
 import InputFile from '../../../stories/Input/InputFile';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import {Mutation} from '@apollo/client';
+import { Mutation } from '@apollo/client';
+import toast, { Toaster } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
 
@@ -35,7 +36,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
             return (true)
         }
-        console.error('Invalid email address: ' + email);
+        toast.error('Invalid email address: ' + email);
         return (false)
     }
 
@@ -46,16 +47,24 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                     if (selectedFile !== null) {
                         SignUpCheck()
                     } else {
-                        console.log('ERROR: Avatar photo is required');
+                        toast.error('ERROR: Avatar photo is required', {
+                            position: 'bottom-right'
+                        });
                     }
                 } else {
-                    console.log('ERROR: password is required');
+                    toast.error('ERROR: password is required', {
+                        position: 'bottom-right'
+                    });
                 }
             } else {
-                console.log('ERROR: email is required');
+                toast.error('ERROR: email is required', {
+                    position: 'bottom-right'
+                });
             }
         } else {
-            console.log('ERROR: name is required');
+            toast.error('ERROR: name is required', {
+                position: 'bottom-right'
+            });
         }
     }
 
@@ -77,13 +86,13 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
         client
             .mutate({
                 mutation: MyMutation,
-                variables:{
+                variables: {
                     name: name,
                     email: email,
                     password: password,
                 },
             })
-            
+
     }
 
     const SignUpCheck = () => {
@@ -107,12 +116,19 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                 //console.log(res.data.worker);
                 if (res.data.worker === null) {
                     createWorker();
-                    console.log('CREATED ');
+                    toast.success('Welcome to DailySense Folks', {
+                        position: 'bottom-right',
+                        icon: '✨'
+                    });
                 } else {
-                    console.error('This account is already in use');
+                    toast.error('This account is already in use', {
+                        position: 'bottom-right'
+                    });
                 }
             }).catch((err) => {
-                console.warn('Error getting data from server: ', err);
+                toast.error('Error getting data from server: ' + err, {
+                    position: 'bottom-right'
+                });
             });
     }
 
@@ -122,13 +138,19 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                 if (selectedFile !== null) {
                     SignInCheck()
                 } else {
-                    console.log('ERROR: Avatar photo is required');
+                    toast.error('ERROR: Avatar photo is required', {
+                        position: 'bottom-right'
+                    });
                 }
             } else {
-                console.log('ERROR: password is required');
+                toast.error('ERROR: password is required', {
+                    position: 'bottom-right'
+                });
             }
         } else {
-            console.log('ERROR: email is required');
+            toast.error('ERROR: email is required', {
+                position: 'bottom-right'
+            });
         }
     }
 
@@ -174,10 +196,14 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                         });
                     }
                 } else {
-                    console.error('This account is already in use');
+                    toast.error('This account doesnt exists', {
+                        position: 'bottom-right'
+                    });
                 }
             }).catch((err) => {
-                console.warn('Error getting data from server: ', err);
+                toast.error('Error getting data from server: ' + err, {
+                    position: 'bottom-right'
+                });
             });
     }
 
@@ -193,9 +219,14 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
         reader.readAsDataURL(file);
         reader.onload = (file) => {
             setSelectedFile(reader.result); // Display the selected file in css with BASE64
+            toast.success('Uploaded file successfully', {
+                position: 'bottom-right'
+            });
         };
         reader.onerror = (e) => {
-            console.warn('Error' + e);
+            toast.error('Error' + e, {
+                position: 'bottom-right'
+            });
         }
     }
 
@@ -268,6 +299,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                     />
                     <InputFile onChange={(file) => ConvertBase64(file)} />
                 </div>
+                <Toaster />
             </>
         );
     } else if (type === 'SignIn') {
@@ -327,6 +359,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                         handleClick={GoBack}
                     />
                 </div>
+                <Toaster />
             </>
         );
     }
