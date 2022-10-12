@@ -12,7 +12,6 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
 
     const navigate = useNavigate();
 
-
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -185,7 +184,7 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
             .then((res) => {
                 if (res.data.worker !== null) {
                     if (res.data.worker.email !== '' && res.data.worker.password === password) {
-                        //console.log(res.data.worker);
+                        console.log(res.data.worker);
                         navigate('/main', {
                             state: {
                                 name: res.data.worker.name,
@@ -205,13 +204,6 @@ export const ColInfo = ({ backgroundColor, ColWidth, type, logo }) => {
                     position: 'bottom-right'
                 });
             });
-    }
-
-    function ShowInfo() {
-        console.log('Name: ' + name);
-        console.log('Email: ' + email);
-        console.log('Password: ' + password);
-        console.log('Avatar: ' + selectedFile);
     }
 
     function ConvertBase64(file) {

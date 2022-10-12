@@ -51,8 +51,8 @@ export const PageMainBody = ({ email, bodyHeight, bodyWidth, backgroundColor }) 
       })
       .then((res) => {
         //console.log(res.data.worker.dependents);
-        res.data.worker.dependents.map((item) => {
-          //console.log(item);
+        res.data.worker.dependents.map((item) => {    
+          console.log(item);
           arrObj.push(item);
         })  
       }).catch((err) => {
@@ -62,7 +62,7 @@ export const PageMainBody = ({ email, bodyHeight, bodyWidth, backgroundColor }) 
 
   useEffect(() => {
     getDependentData();
-  })
+  }, [])
 
   const style = {
     height: bodyHeight + 'vh',

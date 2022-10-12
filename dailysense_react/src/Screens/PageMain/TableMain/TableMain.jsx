@@ -9,36 +9,39 @@ export const TableMain = ({ data, backgroundColor, TableHeight, TableWidth, Bord
 
     useEffect(() => {
         setNewData(data);
-    });
+    }, []);
+
+    //console.log(newData);
+
     
     const style = {
         height: TableHeight + '%',
         width: TableWidth + '%',
         backgroundColor: backgroundColor,
         BorderRadius: BorderRadius + 'px',
-    }
+    } 
 
     return (
         <div className="TableMain" style={style}>
-            {newData.map((person) => {
-            return (
-                <div className="card" key={person.id}>
+            {newData.map((person, index) => {
+            return ( 
+                <div className="card" key={index}>
                     <div className="dependencyLevel" id={person.dependencyLevel}></div>
-                    <div className="avatarWrapper" key={person.id}>
-                        <div key={person.id} className="avatarDependent" style={{ backgroundImage: `url("${person.avatar.url}")` }}>
+                    <div className="avatarWrapper" key={index}>
+                        <div key={index} className="avatarDependent" style={{ backgroundImage: `url("${person.avatar.url}")` }}>
                         </div>
                     </div>
                     <div className="name_info">
-                        <Text key={person.id} fontSize={0.8} label={person.name} />
+                        <Text key={index} fontSize={0.8} label={person.name} />
                     </div>
                     <div className="age_info">
-                        <Text key={person.id} fontSize={0.8} label={person.age.toString()} />
+                        <Text key={index} fontSize={0.8} label={person.age.toString()} />
                     </div>
                     <div className="email_info">
-                        <Text key={person.id} fontSize={0.8} label={person.email} />
+                        <Text key={index} fontSize={0.8} label={person.email} />
                     </div>
                     <div className="phone_info">
-                        <Text key={person.id} fontSize={0.8} label={person.contactPhone.toString()} />
+                        <Text key={index} fontSize={0.8} label={person.contactPhone.toString()} />
                     </div>
                 </div> 
             );
